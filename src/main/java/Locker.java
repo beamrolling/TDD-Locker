@@ -14,6 +14,7 @@ public class Locker {
         }
         Ticket ticket = new Ticket();
         grids.put(ticket,bag);
+        this.capacity -= 1;
         return ticket;
     }
 }
