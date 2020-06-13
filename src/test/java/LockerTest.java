@@ -30,4 +30,16 @@ public class LockerTest {
         Bag expected = locker.getBag(ticket);
         assertNotNull(expected);
     }
+
+    @Test
+    public void should_show_invalid_ticket_message_when_get_bag_given_duplicated_ticket() {
+        Locker locker = new Locker();
+        Bag bag = new Bag();
+        Ticket ticket = locker.storeBag(bag);
+        Bag first = locker.getBag(ticket);
+        InvalidTicket exception = assertThrows(InvalidTicket.class,
+                ()->locker.getBag(ticket), "Invalid ticket!"
+        );
+        assertEquals(exception.getMessage(),"Invalid ticket!");
+    }
 }

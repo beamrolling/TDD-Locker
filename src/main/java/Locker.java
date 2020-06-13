@@ -12,8 +12,12 @@ public class Locker {
     }
 
     public Bag getBag(Ticket ticket) {
-        this.capacity += 1;
-        return grids.remove(ticket);
+        if(grids.containsKey(ticket)) {
+            this.capacity += 1;
+            return grids.remove(ticket);
+        } else {
+            throw new InvalidTicket("Invalid ticket!");
+        }
     }
 
     public Ticket storeBag(Bag bag) {
