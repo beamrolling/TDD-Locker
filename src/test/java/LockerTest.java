@@ -21,4 +21,13 @@ public class LockerTest {
         );
         assertEquals(exception.getMessage(),"Locker is full!");
     }
+
+    @Test
+    public void should_return_bag_when_get_bag_given_valid_ticket() {
+        Locker locker = new Locker();
+        Bag bag = new Bag();
+        Ticket ticket = locker.storeBag(bag);
+        Bag expected = locker.getBag(ticket);
+        assertNotNull(expected);
+    }
 }
