@@ -9,6 +9,9 @@ public class Locker {
     }
 
     public Ticket storeBag(Bag bag) {
+        if(capacity == 0) {
+            throw new LockerFullException("Locker is full!");
+        }
         Ticket ticket = new Ticket();
         grids.put(ticket,bag);
         return ticket;
